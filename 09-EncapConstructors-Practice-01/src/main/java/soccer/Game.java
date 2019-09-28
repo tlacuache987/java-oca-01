@@ -14,11 +14,11 @@ import utility.GameUtils;
  */
 public class Game {
 
-	public Team homeTeam;
+	private Team homeTeam;
 
-	public Team awayTeam;
+	private Team awayTeam;
 
-	public Goal[] goals;
+	private Goal[] goals;
 
 	public void playGame(int maxGoals) {
 		/*
@@ -43,11 +43,35 @@ public class Game {
 		StringBuilder returnString = new StringBuilder();
 
 		for (Goal currGoal : this.goals) {
-			returnString.append("Goal scored after " + currGoal.theTime + " mins by " + currGoal.thePlayer.playerName
-					+ " of " + currGoal.theTeam.teamName + "\n");
+			returnString.append("Goal scored after " + currGoal.getTheTime() + " mins by " + currGoal.getThePlayer().getPlayerName()
+					+ " of " + currGoal.getTheTeam().getTeamName() + "\n");
 		}
 
 		return returnString.toString();
+	}
+	
+	public Team getHomeTeam() {
+		return homeTeam;
+	}
+	
+	public void setHomeTeam(Team homeTeam) {
+		this.homeTeam = homeTeam;
+	}
+	
+	public Team getAwayTeam() {
+		return awayTeam;
+	}
+	
+	public void setAwayTeam(Team awayTeam) {
+		this.awayTeam = awayTeam;
+	}
+	
+	public Goal[] getGoals() {
+		return goals;
+	}
+	
+	public void setGoals(Goal[] goals) {
+		this.goals = goals;
 	}
 
 }

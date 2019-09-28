@@ -25,24 +25,22 @@ public class Order {
 	public void calcDiscount() {
 		// Replace the if logic with a switch statement.
 
-		if (custType == NONPROFIT) {
-			if (total > 900) {
-				discount = 10.00;
-			} else {
-				discount = 5.00;
-			}
-		} else if (custType == PRIVATE) {
-			if (total > 900) {
-				discount = 7.00;
-			} else {
-				discount = 0.00;
-			}
-		} else if (custType == CORP) {
-			if (total < 500) {
-				discount = 8.00;
-			} else {
-				discount = 5.00;
-			}
+		switch (custType) {
+		case NONPROFIT:
+			discount = (total > 900) ? 10.00 : 8.00;
+			break;
+
+		case PRIVATE:
+			discount = (total > 900) ? 7.00 : 0.00;
+			break;
+
+		case CORP:
+			discount = (total > 500) ? 8.00 : 5.00;
+			break;
+
+		default:
+			System.out.println("Invalid custType");
+			break;
 		}
 	}
 }
