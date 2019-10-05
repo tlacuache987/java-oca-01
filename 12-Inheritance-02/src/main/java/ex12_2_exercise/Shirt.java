@@ -12,4 +12,12 @@ public class Shirt extends Item {
 
 	// Override display() in the superclass to also show size and colorCode.
 	// Avoid duplicating code.
+
+	@Override
+	public void display() {
+		super.display();
+		System.out.println("\tSize: " + this.size);
+		System.out.println("\tColor Code: " + this.colorCode);
+	}
+
 }

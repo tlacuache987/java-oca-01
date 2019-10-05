@@ -25,7 +25,7 @@ public class Item {
 		System.out.println("\tPrice: " + getPrice());
 	}
 
-	private void setId() {
+	public void setId() {
 		id = Item.nextId++;
 	}
 

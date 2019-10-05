@@ -18,5 +18,26 @@ public class Shirt extends Item {
 
 	// Code a public getColor method that converts the colorCode to a the color name
 	// Use a switch statement. Return the color name.
+	public String getColor() {
+		String color = "";
+		switch (colorCode) {
+		case 'R':
+			color = "Red";
+			break;
+		case 'G':
+			color = "Green";
+			break;
+		case 'B':
+			color = "Blue";
+			break;
+		case 'Y':
+			color = "Yellow";
+			break;
+		default:
+			color = "undefined";
+			break;
+		}
+		return color;
+	}
 
 }
