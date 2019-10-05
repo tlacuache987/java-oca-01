@@ -5,6 +5,8 @@
  */
 package soccer;
 
+import java.time.LocalDateTime;
+import java.time.Period;
 import java.util.ArrayList;
 import java.util.StringTokenizer;
 import utility.PlayerDatabase;
@@ -22,10 +24,12 @@ public class League {
 
 		League theLeague = new League();
 
-		Team[] theTeams = theLeague.createTeams("The Robins,The Crows,The Swallows", 5);
+		Team[] theTeams = theLeague.createTeams("The Robins,The Crows,The Swallows,The Crows,The Cows,The Dogs", 5);
 		Game[] theGames = theLeague.createGames(theTeams);
 
 		/* Practice 11-2. Print the League announcement here */
+		System.out.println(theLeague.getLeagueAnnouncement(theGames));
+		
 		for (Game currGame : theGames) {
 			currGame.playGame();
 			System.out.println(currGame.getDescription());
@@ -52,18 +56,21 @@ public class League {
 		/*
 		 * Practice 11-2. Add a line to declare and initialize daysBetweenGames variable
 		 */
-		ArrayList theGames = new ArrayList();
+		int daysBetweenGames = 0;
+		
+		ArrayList<Game> theGames = new ArrayList<>();
 
 		for (Team homeTeam : theTeams) {
 			for (Team awayTeam : theTeams) {
 				if (homeTeam != awayTeam) {
 					/* Practice 11-2. Increment daysBetweenGames here */
+					daysBetweenGames += 7;
 
 					/*
 					 * Practice 11-2. Modify the statement below to add pass LocalDateTime into
 					 * constructor
 					 */
-					theGames.add(new Game(homeTeam, awayTeam));
+					theGames.add(new Game(homeTeam, awayTeam, LocalDateTime.now().plusDays(daysBetweenGames)));
 				}
 
 			}
@@ -94,5 +101,10 @@ public class League {
 	}
 
 	/* Practice 11-2. Add the getLeagueAnnouncement() method here */
+	public String getLeagueAnnouncement (Game[] games) {
+		Period period = Period.between(games[0].getDateTime().toLocalDate(), games[games.length-1].getDateTime().toLocalDate());
+		
+		return "The league is scheduled to run for " + period.getMonths() + " month(s), and " + period.getDays() + " day(s)\n"; 
+	}
 
 }
