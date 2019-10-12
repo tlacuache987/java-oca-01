@@ -69,6 +69,7 @@ public class Game {
 				}
 
 				/* Practice 13-3. Add the line to increment goals scored for a player */
+				currEvent.getThePlayer().incGoalsScored();
 			}
 
 			returnString.append(currEvent + " after " + currEvent.getTheTime() + " mins by "

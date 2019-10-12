@@ -5,7 +5,7 @@ public class Calculator {
         return x + y;
     }
     // This method could throw an ArithmeticException
-    public double divide(int x, int y){
+    public double divide(int x, int y) throws ArithmeticException{
         return x / y;
     }
 }
